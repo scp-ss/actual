@@ -9,11 +9,12 @@ pub fn a1() -> (i32, Identifier) {
     let a: i32 = get_input("Enter First Number ");
     let b: i32 = get_input("Enter Second Number ");
     let result = crate::math::add::add_two(a, b);
+    // ##################################
     let mut id1 = Identifier {
-        name: "add_two".to_string(),
+        name: "a1".to_string(),
         id: "madd.1".to_string(),
-        pid: 0,
-        location: "math::add".to_string(),
+        pid: None,
+        location: "math::add::c_add".to_string(),
         description: Some("Adds two integers and returns the result.".to_string()),
         return_type: Some(vec!["i32".to_string()]),
         return_value: Some(vec![result.to_string()]),
@@ -23,12 +24,12 @@ pub fn a1() -> (i32, Identifier) {
             Argument {
                 name: "a".to_string(),
                 ty: "i32".to_string(),
-                val: "5".to_string(),
+                val: a.to_string(),
             },
             Argument {
                 name: "b".to_string(),
                 ty: "i32".to_string(),
-                val: "3".to_string(),
+                val: b.to_string(),
             },
         ]),
         source: Some("math::c_add::a(){}".to_string()),
@@ -39,18 +40,47 @@ pub fn a1() -> (i32, Identifier) {
             status_title: utility::func::ident::Status_T::Working(Some("for_c_math".to_string())),
             status_code: 523,
         },
+        validate: false,
     };
-    id1.clone()
-        .add()
-        .unwrap_or_else(|e| eprintln!("Could not add; \n{e}"));
-    // .expect("FAILED_TO_ADD PID {}");
+    id1.print_s();
+    id1.generate_pid()
+        .validate();
+    id1.print_s();
+    // let pid;
+    let w;
+    match id1.pid {
+        Some(x) => {
+            let pid = x;
+            w = pid;
+        }
+        _ => panic!("NO PID AHAH "),
+    };
+    // just realise  i can just do;
+    // let w = id1.pid.expect("NO PID AHAH");
+    //let w = id1.pid.unwrap_or_else(|| panic!("NO PID AHAH"));
+    // or, for a default:
+    // let w = id1.pid.unwrap_or(0);
+    println!("id1 is {}", id1.validate.clone());
     println!("Result: {}", result);
-    println!("PID = {}, {}", std::process::id(), id1.pid);
-    // println!("")
-    // let w = PID_TABLE.get(0); // works
-    // println!("Walter {:?}", w);
+    println!("PID = {}, {:?}", std::process::id(), w);
+    println!("Calling from c_add::a1 to add::add_two");
     println!("###### End of math::c_add::add_two() ######\n\n\n\n\n");
-    id1.status
-        .status_title = utility::func::ident::Status_T::Good;
+    println!("{:?}", id1.clone());
+    // id1.status
+    //     .status_title = utility::func::ident::Status_T::Good(Some("Free to be used".to_owned()));
+    // id1.status
+    //     .status_code = 200;
+    // id1.s_free(Some("Free to be used".to_string()));
+    id1.s_status(Some("Free to be used".to_string()), Some(200));
+    id1.print_s();
+
     (result, id1)
 }
+
+// println!("")
+// let w = PID_TABLE.get(0); // works
+// println!("Walter {:?}", w);
+// id1.clone()
+// .add()
+// .unwrap_or_else(|e| eprintln!("Could not add; \n{e}"));
+// .expect("FAILED_TO_ADD PID {}");

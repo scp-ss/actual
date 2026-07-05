@@ -19,8 +19,7 @@ use crossterm::event;
 
 fn main() -> std::io::Result<()> {
     println!("\x1Bc");
-    println!("[removed]");
-    utility::func::ident::test();
+    // utility::func::ident::Js();
     call_to();
     // let (a, b) = call_to();
     // print!("{}, {:?}", a, b.name);
