@@ -26,3 +26,12 @@ where
         }
     }
 }
+
+// pub fn parse_input<T>(input: &str) -> Result<T, T::Err>
+// where
+//     T: std::str::FromStr,
+// {
+//     input
+//         .trim()
+//         .parse::<T>()
+// }
