@@ -53,7 +53,6 @@ impl Identifier {
     pub fn s_status(&mut self, a: Option<String>, code: Option<u64>) {
         self.status
             .status_code = code.unwrap_or(41414141);
-
         self.status
             .status_title = match self
             .status
@@ -65,6 +64,8 @@ impl Identifier {
             _ => Status_T::Failed(None),
         };
     }
+    // AHAHA
+    // Pu pur rui rui rui atau rui rui rui rui rui rui uri
     pub fn generate_pid(&mut self) -> &mut Identifier {
         if self.pid.is_none() {
             self.pid = Some(PID_TABLE.next_pid());

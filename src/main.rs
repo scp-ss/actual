@@ -24,7 +24,7 @@ fn main() -> std::io::Result<()> {
     // let (a, b) = call_to();
     // print!("{}, {:?}", a, b.name);
     // print!("{}, {:?}", a, b);
-    ratatui::run(|mut terminal| {
+    ratatui::run(|terminal| {
         loop {
             terminal.draw(|frame| frame.render_widget("Hello World!", frame.area()))?;
             if event::read()?.is_key_press() {

@@ -1,6 +1,6 @@
 use crate::utility::{
     self,
-    func::ident::{Argument, Identifier, PID_TABLE, Status, Status_T},
+    func::ident::{Argument, Identifier, /*PID_TABLE,*/ Status /*Status_T*/},
     r#use::get_input,
 };
 pub fn a1() -> (i32, Identifier) {
@@ -47,14 +47,18 @@ pub fn a1() -> (i32, Identifier) {
         .validate();
     id1.print_s();
     // let pid;
-    let w;
-    match id1.pid {
-        Some(x) => {
-            let pid = x;
-            w = pid;
-        }
-        _ => panic!("NO PID AHAH "),
-    };
+    // let w;
+    // let pid;
+    // match id1.pid {
+    //     Some(x) => {
+    //         pid = x;
+    //         // w = pid;
+    //     }
+    //     _ => panic!("NO PID AHAH "),
+    // };
+    let pid = id1
+        .pid
+        .expect("NO PID AHAH");
     // just realise  i can just do;
     // let w = id1.pid.expect("NO PID AHAH");
     //let w = id1.pid.unwrap_or_else(|| panic!("NO PID AHAH"));
@@ -62,7 +66,7 @@ pub fn a1() -> (i32, Identifier) {
     // let w = id1.pid.unwrap_or(0);
     println!("id1 is {}", id1.validate.clone());
     println!("Result: {}", result);
-    println!("PID = {}, {:?}", std::process::id(), w);
+    println!("PID = {}, {:?}", std::process::id(), pid);
     println!("Calling from c_add::a1 to add::add_two");
     println!("###### End of math::c_add::add_two() ######\n\n\n\n\n");
     println!("{:?}", id1.clone());
@@ -84,3 +88,8 @@ pub fn a1() -> (i32, Identifier) {
 // .add()
 // .unwrap_or_else(|e| eprintln!("Could not add; \n{e}"));
 // .expect("FAILED_TO_ADD PID {}");
+// pub fn a2() -> (i64)
+/* pub fn a2() -> (i32, Identifier) {
+    println!("\n\n\n\n\n\n ###### Start of math::c_add::add_two() ######");
+}
+ */
