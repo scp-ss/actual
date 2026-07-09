@@ -5,7 +5,7 @@ extern crate lazy_static;
 mod acc_soft;
 mod math;
 mod menu;
-mod tests;
+mod test;
 mod ui;
 mod utility;
 /* fn main() {
@@ -24,6 +24,7 @@ fn main() -> std::io::Result<()> {
     // let (a, b) = call_to();
     // print!("{}, {:?}", a, b.name);
     // print!("{}, {:?}", a, b);
+    // test();
     ratatui::run(|terminal| {
         loop {
             terminal.draw(|frame| frame.render_widget("Hello World!", frame.area()))?;
@@ -33,6 +34,7 @@ fn main() -> std::io::Result<()> {
         }
     })
 }
+
 fn call_to() {
     // -> (i32, utility::func::ident::Identifier) {
     // let result = math::add::add_two(5, 3);
@@ -50,6 +52,11 @@ fn call_to() {
         // eprintln!("error fiel")
         println!("######%%% End of utility::call_to::main() ######%%%%\n\n\n\n\n\n ");
     }
+    test();
+}
+// mod test;
+fn test() {
+    crate::test::m::test();
 }
 // fn call_to() -> (i32, utility::func::ident::Identifier) {
 // let result = math::add::add_two(5, 3);

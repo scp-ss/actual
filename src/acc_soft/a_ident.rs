@@ -1,6 +1,6 @@
 // Previous code was written yy me (80%), but the ideas and problem solving is more then half done by ai.
 // All hardparts are done by AI. (that beign the 50% ), i did only intermidiate parts.
-// U saw a vid on 'CognetiveOFfLoading' TypeShi and cauz of htat u want to quit
+// U saw a vid on 'CognetiveOFfLoading' TypeShi and cauz of htat u want to quitp
 #![allow(unused, dead_code)]
 pub struct PersonTypeName {
     customer: String,
