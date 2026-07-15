@@ -26,6 +26,7 @@ pub struct Customer {
     // conncects related APID to LPID.
     a_related_to: PersonTypeName,
 }
+
 // TODO!().
 // Cauz this is not completed.
 pub enum CustomerLevel {}

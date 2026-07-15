@@ -24,6 +24,7 @@ pub struct Identifier {
     pub status: Status,
     pub validate: bool,
 }
+
 #[derive(Clone, Debug)]
 pub struct Status {
     pub status_title: Status_T,
@@ -48,7 +49,7 @@ pub struct Argument {
 
 impl Identifier {
     pub fn print_s(&self) {
-        println!("{:?}", self.status);
+        println!("{:?}", self.status); // Sikol
     }
     pub fn s_status(&mut self, a: Option<String>, code: Option<u64>) {
         self.status
@@ -62,9 +63,28 @@ impl Identifier {
             200..=299 => Status_T::Good(a),
             400..=599 => Status_T::Failed(a),
             _ => Status_T::Failed(None),
-        };
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+        // anyhow . so lwk fix this. and create a .json file contianing all the statuscode frm ths ewbstie1:
+        /*
+        https://www.rfc-editor.org/info/rfc6455/#section-7.4.1
+        https://en.wikipedia.org/wiki/Deprecation
+        WEBSOCKET RULES / CODES NOT HTTP
+        https://www.rfc-editor.org/info/rfc9110/
+        https://ryam.medium.com/http-status-codes-arent-optional-stop-using-200-for-everything-e1698a09f8fa
+        https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status
+        READ the rest for full info.
+        NO AI allowed asusual
+         */
     }
     // AHAHA
+    //
     // Pu pur rui rui rui atau rui rui rui rui rui rui uri
     pub fn generate_pid(&mut self) -> &mut Identifier {
         if self.pid.is_none() {
@@ -72,18 +92,21 @@ impl Identifier {
         }
         self
     }
-    pub fn s_lock(&mut self) {}
+    pub fn s_lock(&mut self, a: String) {
+        self.status
+            .status_title = Status_T::Failed(Some("".to_string())) // why are we doing a "".to_string , why not none 
+    }
+
     // pub fn generate_pid(&mut self) -> &mut Identifier {
     //     // dont do self her cauz if we do sel id would be consued, adn if we do u32 then method vlalidate wont get called
     //     self.pid = PID_TABLE.next_pid();
     //     self
     // }
+    // pub fn
     pub fn validate(&mut self) -> bool {
-        if self.pid.is_none() {
-            self.generate_pid();
-        }
         let pid = self.pid.unwrap(); // safe: guaranteed Some by the line above
-
+        let lenght = self.name.len();
+        let mut pid_validate = false;
         let mut table = PID_TABLE
             .table
             .lock()
@@ -91,15 +114,100 @@ impl Identifier {
         match table.get(&pid) {
             Some(_) => {
                 println!("validation => false (duplicate PID: {pid})");
-                false
+                pid_validate = false;
             }
             None => {
                 self.validate = true;
                 table.insert(pid, self.clone());
-                true
+                pid_validate = true;
             }
         }
+
+        // fn test(A: Identifier) {
+        // sum(unsafe { Identifier }, 1)
+
+        // }
+
+        // if pid_validate
+        //     && !(1000..=9999).contains(
+        //         &self
+        //             .status
+        //             .status_code,
+        //     )
+        // {
+        //     true
+        // } else {
+        //     false
+        // },this was coded by rust anlayuzer u comented this auz rust analyzer siad u can write hte one bleo w better
+        if 41414141
+            == self
+                .status
+                .status_code
+        {
+            println!("Enter Valid STATUS_CODE.\n STATUSCODE IS MISSING OR INVALID CODE")
+        }
+        {
+            {
+                {
+                    {
+                        {
+                            {
+                                {
+                                    {
+                                        {
+                                            {
+                                                {
+                                                    println!("Walter");
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /*
+
+                ██████╗ ██╗   ██╗███████╗████████╗
+                ██╔══██╗██║   ██║██╔════╝╚══██╔══╝
+                ██████╔╝██║   ██║███████╗   ██║
+                ██╔══██╗██║   ██║╚════██║   ██║
+                ██║  ██║╚██████╔╝███████║   ██║
+                ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝
+        ████████████████████████████████████████████████████████████████████████████████████████
+                */
+        let status = self
+            .status
+            .status_code;
+
+        let valid_pid = pid_validate;
+        let valid_range = !(1000..=9999).contains(&status);
+        let not_magic = status != 41_414_141;
+        let valid_length: bool = (3..200).contains(&lenght);
+
+        // let walt: bool;
+        // println!("{}", walt);
+        self.validate = valid_pid || valid_range || not_magic || valid_length;
+        self.validate
+        // self.validate = pid_validate
+        // && !(1000..=9999).contains(
+        // &self
+        // .status
+        // .status_code,
+        // )
+        // && (41414141
+        // != self // iDK why but u dod &self and hten * so *& lol.
+        // .status
+        // .status_code)
+        // && (lenght < 200)
+        // && (lenght > 2);
+        // self.validate // Create a system msg ysstem for code= 4141... on  line 55.
+        // smt like: 'Failed to parse status_code, enter valid status_code'.
     }
+
     // pub fn validate(&mut self) -> bool {
     //     // if self.validate =
     //     let mut table = PID_TABLE

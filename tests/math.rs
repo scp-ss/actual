@@ -16,7 +16,7 @@ pub mod add_two_tests {
 pub mod add_vector {
     use actual::math::add::sum_of_vector;
 
-    use super::*; // or parents shi
+    // use super::*; // or parents shi
     #[test]
     fn add_vec1() {
         let a = vec![0];

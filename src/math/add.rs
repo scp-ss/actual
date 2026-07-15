@@ -1,3 +1,4 @@
+#![allow(unused, non_camel_case_types)]
 pub fn add_two<T>(a: T, b: T) -> T
 where
     T: std::ops::Add<Output = T>,

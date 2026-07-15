@@ -1,8 +1,10 @@
-#[macro_use]
+// #[macro_use]
 extern crate lazy_static;
 // use std::intrinsics::powf128;
 
 mod acc_soft;
+mod database;
+mod dsa;
 mod math;
 mod menu;
 mod test;
@@ -18,7 +20,13 @@ mod utility;
 use crossterm::event;
 
 fn main() -> std::io::Result<()> {
+    // let x = 42;
+    // let y = 43;
+    // let var1 = &x;
+    // let mut var2 = &x;
+    // var2 = &y;
     println!("\x1Bc");
+    // println!("")
     // utility::func::ident::Js();
     call_to();
     // let (a, b) = call_to();
@@ -36,6 +44,7 @@ fn main() -> std::io::Result<()> {
 }
 
 fn call_to() {
+    println!("\n\n\n START OF CALL_TO main.rs");
     // -> (i32, utility::func::ident::Identifier) {
     // let result = math::add::add_two(5, 3);
     // println!("Result: {}", result);
@@ -53,10 +62,23 @@ fn call_to() {
         println!("######%%% End of utility::call_to::main() ######%%%%\n\n\n\n\n\n ");
     }
     test();
+    // bubble_sort();
+    {
+        println!("\n\n\n START OF bubble_sort main.rs");
+        // let mut arr = vec![2.2, 2.1];
+
+        let (_, mut b) = dsa::c_bubble_sort::bs_1();
+        // a =
+        b.s_lock("Locked for testing".to_string());
+        println!("END OF bubble_sort main.rs\n\n\n\n");
+    }
+    println!("\n\n\n END OF CALL_TO main.rs");
 }
 // mod test;
 fn test() {
+    println!("\n\n\n START OF test main.rs");
     crate::test::m::test();
+    println!("END OF test main.rs\n\n\n\n");
 }
 // fn call_to() -> (i32, utility::func::ident::Identifier) {
 // let result = math::add::add_two(5, 3);
@@ -68,3 +90,5 @@ fn test() {
 //     let result = math::add::add_two(5, 3);
 //     println!("Result: {}", result);
 // }
+
+// fn bubble_sort() {}

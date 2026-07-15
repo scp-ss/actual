@@ -59,6 +59,7 @@ pub fn a1() -> (i32, Identifier) {
     let pid = id1
         .pid
         .expect("NO PID AHAH");
+    //Money Talks
     // just realise  i can just do;
     // let w = id1.pid.expect("NO PID AHAH");
     //let w = id1.pid.unwrap_or_else(|| panic!("NO PID AHAH"));

@@ -1,3 +1,4 @@
+#![allow(unused, non_camel_case_types, clippy::upper_case_acronyms)]
 // #[derive(Debug, Clone, PartialEq)]
 // pub enum FuncReturn {
 //     Nested,
