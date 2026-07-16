@@ -8,7 +8,7 @@ use crate::utility::{
     },
     // r#use::get_input,
 };
-pub fn test() {
+pub fn test() -> Identifier {
     let mut simga = Walter { test: 0 };
     simga
         .add(get_input("Enter A number"))
@@ -18,7 +18,7 @@ pub fn test() {
         id: "testm1".to_string(),
         pid: None,
         location: "test::m::test()".to_string(),
-        description: Some("Adds two integers and returns the result.".to_string()),
+        description: Some("Constructs a struct htat ahs aadd and print methods, to print u32 orincremntt it by 1 .".to_string()),
         return_type: Some(vec!["i32".to_string()]),
         return_value: None,
         args_type: None,
@@ -42,12 +42,14 @@ pub fn test() {
         .validate();
     id1.print_s();
     // println!("")
+    println!("Pid  = {:?}", id1.pid);
     id1.s_status(
         Some("cant be called anymore. Nothing more todo. only one call per runtime".to_string()),
         Some(1201),
     );
     // id1.lock();
     // Create a lock and unlock state
+    id1
 }
 // fn nice() {
 //     let n = vec![20, 20];

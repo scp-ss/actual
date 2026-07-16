@@ -77,8 +77,10 @@ fn call_to() {
 // mod test;
 fn test() {
     println!("\n\n\n START OF test main.rs");
-    crate::test::m::test();
+    let m = crate::test::m::test();
+    println!("Identifier1 = {:?}", m);
     println!("END OF test main.rs\n\n\n\n");
+    vec!["walter"];
 }
 // fn call_to() -> (i32, utility::func::ident::Identifier) {
 // let result = math::add::add_two(5, 3);

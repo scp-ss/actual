@@ -6,6 +6,9 @@ use std::sync::{
     atomic::{AtomicU64, Ordering},
 };
 #[derive(Clone, Debug)]
+// i should write doscs ofor htis cauz evertime i sue this i change the featuring,
+// 'cid means that , we put that in sourcec_all'
+// i've only used this 2 times  adn geuss waht both of thsose times  changed.
 pub struct Identifier {
     pub name: String,
     pub id: String,
@@ -187,10 +190,25 @@ impl Identifier {
         let valid_range = !(1000..=9999).contains(&status);
         let not_magic = status != 41_414_141;
         let valid_length: bool = (3..200).contains(&lenght);
-
+        // if walter >= 10 {...}
         // let walt: bool;
         // println!("{}", walt);
-        self.validate = valid_pid || valid_range || not_magic || valid_length;
+        self.validate = valid_pid && valid_range && not_magic && valid_length;
+        // dont do ||, do &&,
+        /*
+        0----||-|
+        1----||-|--------- 1
+        0----||-| 0
+        0----||-| 0
+        So return 1.
+        but we want to fail even if one.
+
+        1-----&&--|
+        1---------1----||----0    // Now this is 0 cauz one if 0
+        0----------0----||--|      // Since one is '0',it reutn o
+        1-----&&--|
+
+        */
         self.validate
         // self.validate = pid_validate
         // && !(1000..=9999).contains(
