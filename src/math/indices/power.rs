@@ -1,1 +1,1 @@
-fn pow()
+// fn pow<T>()

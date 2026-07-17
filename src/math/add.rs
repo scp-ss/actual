@@ -23,7 +23,6 @@ where
     }
     count
 }
-
 pub struct Vector_Arithimatic<T> {
     pub vector: Vec<Vec<T>>,
 }
