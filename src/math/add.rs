@@ -1,4 +1,6 @@
 #![allow(unused, non_camel_case_types)]
+
+use std::ops::AddAssign;
 pub fn add_two<T>(a: T, b: T) -> T
 where
     T: std::ops::Add<Output = T>,
@@ -25,6 +27,12 @@ where
 }
 pub struct Vector_Arithimatic<T> {
     pub vector: Vec<Vec<T>>,
+}
+pub fn add_vector<T>(a: Vec<Vec<T>>)
+//-> Vec<T>
+where
+    T: AddAssign + std::ops::Add<Output = T> + num_traits::Num,
+{
 }
 
 // pub fn add_vector<T>(a: Vec<Vec<T>>) -> Vec<T>
