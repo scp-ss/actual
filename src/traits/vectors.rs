@@ -1,5 +1,3 @@
-use std::str::FromStr;
-
 /// Vec<T> -> String. Can't fail: everything that implements ToString
 /// always produces *some* string, so there's no error case to handle here.
 pub trait ToJoinedString {

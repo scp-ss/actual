@@ -1,6 +1,6 @@
 use crossterm::event;
 
-use crate::c_wrapper;
+// use crate::c_wrapper;
 
 // prelude.rs (crate root)
 // pub use crate::utils::prelude::*;/
@@ -8,15 +8,17 @@ use crate::c_wrapper;
 // pub use crate::math::prelude
 pub mod call {}
 pub fn call() -> std::io::Result<()> {
-    c_wrapper!(
-        fn_name: a1,
-        id: "madd.1",
-        location: "math::add::c_add",
-        target: math::add::add_two,
-        desc: "Adds two integers and returns the result.",
-        args: [(a: i32), (b: i32)],
-        ret_ty: i32
-    );
+    crate::math::c_ool_patterns();
+    crate::dsa::collections::c_bubble_sort::bs_1();
+    //     c_wrapper!(
+    //         fn_name: a1,
+    //         id: "madd.1",
+    //         location: "math::add::c_add",
+    //         target: math::add::add_two,
+    //         desc: "Adds two integers and returns the result.",
+    //         args: [(a: i32), (b: i32)],
+    //         ret_ty: i32
+    //     );
     // let mut vector = vec![vec![20, 30]];
     // vector.double_all();
     // let x = 42;

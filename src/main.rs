@@ -1,6 +1,7 @@
 // #[macro_use]
 extern crate lazy_static;
-use std::vec;
+// use std::vec;
+#[allow(unused)]
 pub(crate) use utils::macros::m_ident::c_wrapper;
 // use vector_double::DoubleAll;
 
@@ -55,7 +56,7 @@ anoteh thing registry, TUI.rs , and uhh anyhgn related to registry is
 NOT coded by u, MAKE srue to leanr them after learnjng basics of rust
  */
 fn main() {
-    init_call_to::call();
+    let _ = init_call_to::call();
     // init_call_to::init_all_functions();
     print!("\x1B[2J\x1B[1;1H");
     ui::run_tui();

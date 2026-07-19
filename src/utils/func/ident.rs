@@ -316,8 +316,15 @@ impl PidTable {
 pub struct Registry {
     pub funcs: HashMap<u64, fn() -> Identifier>,
 }
-
+impl Default for Registry {
+    fn default() -> Self {
+        Self::new()
+    }
+}
 impl Registry {
+    // pub fn default() -> Self {
+    //     Self.new()
+    // }
     pub fn new() -> Self {
         Registry {
             funcs: HashMap::new(),

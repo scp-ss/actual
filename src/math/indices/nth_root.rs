@@ -59,13 +59,13 @@ pub fn nth_root<T: Float>(number: T, root_power: T) -> T {
     guess
 }
 
-fn main() {
-    println!("{}", nth_root(8.0_f64, 3.0)); // ~2.0
-    println!("{}", nth_root(2.0_f64, 2.0)); // ~1.4142...
-    println!("{}", nth_root(0.5_f64, 2.0)); // ~0.7071...
-}
+// fn main() {
+//     println!("{}", nth_root(8.0_f64, 3.0)); // ~2.0
+//     println!("{}", nth_root(2.0_f64, 2.0)); // ~1.4142...
+//     println!("{}", nth_root(0.5_f64, 2.0)); // ~0.7071...
+// }
 
-fn nth_roots(a: f64, b: f64) -> f64 {
+fn nth_roots(a: f64, _b: f64) -> f64 {
     let n = a; // 27.
     let mut guess_new = n / 2.0;
     let mut unknown = n / guess_new.powf(n - 1.0);

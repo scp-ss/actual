@@ -1,4 +1,5 @@
-use crate::utils::func::ident::Identifier;
+#![allow(unused)]
+// use crate::utils::func::ident::Identifier;
 macro_rules! c_wrapper {
     (
         fn_name: $fn_name:ident,
@@ -12,7 +13,7 @@ macro_rules! c_wrapper {
         pub fn $fn_name() -> crate::utils::func::ident::Identifier {
             println!("\n\n\n\n\n\n ###### Start of {}() ######", stringify!($target));
 
-            $( let $arg_name: $arg_ty = crate::utils::get_input(concat!("Enter ", stringify!($arg_name), " ")); )*
+            // $( let $arg_name: $arg_ty = crate::utils::get_input(concat!("Enter ", stringify!($arg_name), " ")); )*
 
             // let result = crate::$target( $($arg_name),* );
 
@@ -26,23 +27,17 @@ macro_rules! c_wrapper {
                 return_value: None,
                 args_type: Some(vec![ $(stringify!($arg_ty).to_string()),* ]),
                 number_of_args: Some(0 $(+ { let _ = stringify!($arg_name); 1})*),
-                args: Some(vec![
-                    $( crate::utils::func::ident::Argument {
-                        name: stringify!($arg_name).to_string(),
-                        ty: stringify!($arg_ty).to_string(),
-                        val: $arg_name.to_string(),
-                    } ),*
-                ]),
+                args:None,
                 source: Some(format!("{}::{}(){{}}", $location, stringify!($fn_name))),
                 source_call: Some(format!("call.{}", $id)),
                 cid: Some("calle.1".to_string()), // still needs a real generator eventually
                 called_by: Some(vec!["main.rs::main()".to_string()]),
-                status: Status {
-                    status_title: utils::func::ident::Status_T::Working(Some("for_c_math".to_string())),
+                status: crate::utils::func::ident::Status {
+                    status_title: crate::utils::func::ident::Status_T::Working(Some("for_c_math".to_string())),
                     status_code: 523,
                 },
                 validate: false,
-                func_pointer: Some($fn_name as fn() -> Identifier),
+                func_pointer: Some($fn_name as fn() -> crate::utils::func::ident::Identifier),
             };
 
             id1.print_s();
@@ -50,7 +45,7 @@ macro_rules! c_wrapper {
             id1.print_s();
             let pid = id1.pid.expect("NO PID AHAH");
             println!("id1 is {}", id1.validate.clone());
-            println!("Result: {}", result);
+            println!("Result:" );
             println!("PID = {}, {:?}", std::process::id(), pid);
             println!("Calling from {}::{} to {}", $location, stringify!($fn_name), stringify!($target));
             println!("###### End of {}() ######\n\n\n\n\n", stringify!($target));
@@ -64,4 +59,5 @@ macro_rules! c_wrapper {
 }
 // pub(crate) use c_wrapper;
 // pub use c_wrapper;
+#[allow(unused)]
 pub(crate) use c_wrapper;

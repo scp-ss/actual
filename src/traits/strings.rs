@@ -1,10 +1,10 @@
 use std::str::FromStr;
 pub trait FromJoinedStr<T> {
-    fn from_joined_str(&self, sep: &str) -> Vec<T>;
+    fn parse_joined(&self, sep: &str) -> Vec<T>;
 }
 
 impl<T: FromStr> FromJoinedStr<T> for str {
-    fn from_joined_str(&self, sep: &str) -> Vec<T> {
+    fn parse_joined(&self, sep: &str) -> Vec<T> {
         self.split(sep)
             .map(|piece| {
                 piece
