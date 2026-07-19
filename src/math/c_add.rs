@@ -3,7 +3,7 @@ use crate::utils::{
     func::ident::{Argument, Identifier, /*PID_TABLE,*/ Status /*Status_T*/},
     r#use::get_input,
 };
-pub fn a1() -> (i32, Identifier) {
+pub fn a1() -> Identifier {
     // cutility::
     println!("\n\n\n\n\n\n ###### Start of math::c_add::add_two() ######");
     let a: i32 = get_input("Enter First Number ");
@@ -41,6 +41,7 @@ pub fn a1() -> (i32, Identifier) {
             status_code: 523,
         },
         validate: false,
+        func_pointer: Some(a1 as fn() -> Identifier),
     };
     id1.print_s();
     id1.generate_pid()
@@ -79,7 +80,7 @@ pub fn a1() -> (i32, Identifier) {
     id1.s_status(Some("Free to be used".to_string()), Some(200));
     id1.print_s();
 
-    (result, id1)
+    id1
 }
 
 // println!("")

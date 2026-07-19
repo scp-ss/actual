@@ -36,6 +36,8 @@ pub fn test() -> Identifier {
             status_code: 1000,
         },
         validate: false,
+        func_pointer: Some(test as fn() -> Identifier),
+
     };
     id1.print_s();
     id1.generate_pid()

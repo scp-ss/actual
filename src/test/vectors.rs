@@ -1,4 +1,4 @@
-use crate::utils::r#use::get_input;
+// use crate::utils::r#use::get_input;
 use crate::utils::{
     self,
     func::ident::{
@@ -10,7 +10,7 @@ use crate::utils::{
 };
 pub fn test() -> Identifier {
     let mut id1 = Identifier {
-        name: "m".to_string(),
+        name: "m1".to_string(),
         id: "testm1".to_string(),
         pid: None,
         location: "test::m::test()".to_string(),
@@ -32,6 +32,7 @@ pub fn test() -> Identifier {
             status_code: 1000,
         },
         validate: false,
+        func_pointer: Some(test as fn() -> Identifier),
     };
     id1.print_s();
     id1.generate_pid()

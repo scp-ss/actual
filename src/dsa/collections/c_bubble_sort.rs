@@ -1,10 +1,13 @@
-use crate::utils::{
-    self,
-    func::ident::{Argument, Identifier, /*PID_TABLE,*/ Status /*Status_T*/},
-    // r#use::get_input,
+use crate::{
+    dsa::collections::c_bubble_sort,
+    utils::{
+        self,
+        func::ident::{Argument, Identifier, /*PID_TABLE,*/ Status /*Status_T*/},
+        // r#use::get_input,
+    },
 };
 
-pub fn bs_1() -> (Vec<i32>, Identifier) {
+pub fn bs_1() -> Identifier {
     // cutility::
     println!("\n\n\n\n\n\n ###### Start of dsa::c_bubble_sort::bs_1() ######");
 
@@ -60,6 +63,7 @@ pub fn bs_1() -> (Vec<i32>, Identifier) {
             status_code: 523,
         },
         validate: false,
+        func_pointer: Some(bs_1 as fn() -> Identifier),
     };
     id2.print_s();
     id2.generate_pid()
@@ -101,7 +105,7 @@ pub fn bs_1() -> (Vec<i32>, Identifier) {
     id2.s_status(Some("Free to be used".to_string()), Some(200));
     id2.print_s();
 
-    (vectors, id2)
+    id2
 }
 
 // fn bs_2()

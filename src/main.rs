@@ -13,9 +13,9 @@ pub mod menu;
 pub mod rust_book;
 pub mod test;
 pub mod traits;
+pub mod tui;
 pub mod ui;
 pub mod utils;
-
 /* fn main() {
     println!("Hello, world!");
     // powf128(10, 10)
@@ -24,8 +24,33 @@ pub mod utils;
 }
     */
 use crossterm::event;
+// use utils::func::init_call_to;
 
-fn main() -> std::io::Result<()> {
+// mod utils;
+
+// use ui::tui;
+// use utils::func::init_call_to;
+/*
+A couple rpoblesm other then the fact that we want custom ye,
+well we mark funcs with 'input takes' as smt else, and lockthingy,
+adn thnebfoer calling to func we chkec its id1 adn seei fi t CAN be caleld.
+
+
+arg types nad value type as a Int, string or wtvr
+
+
+
+anoteh thing registry, TUI.rs , and uhh anyhgn related to registry is
+NOT coded by u, MAKE srue to leanr them after learnjng basics of rust
+ */
+fn main() {
+    main2();
+    // init_call_to::init_all_functions();
+    print!("\x1B[2J\x1B[1;1H");
+    ui::run_tui();
+}
+
+fn main2() -> std::io::Result<()> {
     // let mut vector = vec![vec![20, 30]];
     // vector.double_all();
     // let x = 42;
@@ -63,8 +88,8 @@ fn call_to() {
     // (a, b)
     {
         println!("\n\n\n\n\n\n %%%###### Start of utility::call_to::main() ######%%%%");
-        let (answer, id1) = crate::math::c_add::a1();
-        println!("Answer: {}", answer);
+        let id1 = crate::math::c_add::a1();
+        // println!("Answer: {}", id1.args.0.val);
         println!("Identifier: {}\n", id1.name);
         println!(
             "Calling from main.rs::call_to(), to math::c_add::a1() function, which calls add::add_two() function."
@@ -78,7 +103,8 @@ fn call_to() {
         println!("\n\n\n START OF bubble_sort main.rs");
         // let mut arr = vec![2.2, 2.1];
 
-        let (_, mut b) = dsa::collections::c_bubble_sort::bs_1();
+        // let (_, mut b) = dsa::collections::c_bubble_sort::bs_1();
+        let mut b = dsa::collections::c_bubble_sort::bs_1();
         // a =
         b.s_lock("Locked for testing".to_string());
         println!("END OF bubble_sort main.rs\n\n\n\n");

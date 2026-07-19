@@ -27,8 +27,10 @@ pub struct Identifier {
     pub called_by: Option<Vec<String>>,
     pub status: Status,
     pub validate: bool,
+    pub func_pointer: Option<fn() -> Identifier>,
 }
 //the myserios bandid sosoerty
+
 #[derive(Clone, Debug)]
 pub struct Status {
     pub status_title: Status_T,
@@ -90,9 +92,20 @@ impl Identifier {
     // AHAHA
     //
     // Pu pur rui rui rui atau rui rui rui rui rui rui uri
+    // AI ADDED THE CHECUP PART THE REST WAS ALR MADE
     pub fn generate_pid(&mut self) -> &mut Identifier {
         if self.pid.is_none() {
-            self.pid = Some(PID_TABLE.next_pid());
+            let mut name_map = PID_TABLE
+                .name_to_pid
+                .lock()
+                .unwrap();
+            if let Some(&existing_pid) = name_map.get(&self.name) {
+                self.pid = Some(existing_pid); // reuse — same function as before
+            } else {
+                let new_pid = PID_TABLE.next_pid();
+                name_map.insert(self.name.clone(), new_pid);
+                self.pid = Some(new_pid);
+            }
         }
         self
     }
@@ -124,6 +137,16 @@ impl Identifier {
                 self.validate = true;
                 table.insert(pid, self.clone());
                 pid_validate = true;
+
+                // Auto-register function pointer if it exists
+                if let Some(func_ptr) = self.func_pointer {
+                    drop(table); // Release lock before acquiring REGISTRY lock
+                    let mut registry = REGISTRY
+                        .lock()
+                        .unwrap();
+                    registry.register(pid, func_ptr);
+                    println!("Registered: {} (PID: {})", self.name, pid);
+                }
             }
         }
 
@@ -255,13 +278,16 @@ impl Identifier {
 }
 pub static PID_TABLE: LazyLock<PidTable> = LazyLock::new(|| PidTable {
     table: Mutex::new(HashMap::new()),
-    next: AtomicU64::new(0), // first call returns 0, next call returns 1, etc.
-});
-
+    name_to_pid: Mutex::new(HashMap::new()), // <- new
+    next: AtomicU64::new(0),                 // first call returns 0, next call returns 1, etc.
+}); // AI told me to addd the name_to_pid
 pub struct PidTable {
-    table: Mutex<HashMap<u64, Identifier>>,
+    pub table: Mutex<HashMap<u64, Identifier>>,
+    name_to_pid: Mutex<HashMap<String, u64>>, // <- new
     next: AtomicU64,
 }
+
+// Recreate most of this for uhh ig ANOTHER TUI syteminsdie this PId system
 impl PidTable {
     pub fn print(&self, pid: Option<u64>) {
         let table = &self
@@ -285,14 +311,42 @@ impl PidTable {
         self.next
             .fetch_add(1, Ordering::SeqCst)
     }
-
-    // fn generate_pid(){
-
-    // AtomicU64::SeSeqCs
-    // }
-    // fn print_table()
-    // fn print_pid()
 }
+
+pub struct Registry {
+    pub funcs: HashMap<u64, fn() -> Identifier>,
+}
+
+impl Registry {
+    pub fn new() -> Self {
+        Registry {
+            funcs: HashMap::new(),
+        }
+    }
+
+    pub fn register(&mut self, pid: u64, func: fn() -> Identifier) {
+        self.funcs
+            .insert(pid, func);
+    }
+
+    pub fn call(&self, pid: u64) -> Result<fn() -> Identifier, String> {
+        self.funcs
+            .get(&pid)
+            .copied()
+            .ok_or_else(|| format!("Function with PID {} not found", pid))
+    }
+
+    pub fn list_all(&self) -> Vec<u64> {
+        self.funcs
+            .keys()
+            .copied()
+            .collect()
+    }
+}
+
+// AI GEN:
+
+pub static REGISTRY: LazyLock<Mutex<Registry>> = LazyLock::new(|| Mutex::new(Registry::new()));
 // struct functionName {
 // name: Has,
 // }
