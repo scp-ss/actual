@@ -1,4 +1,4 @@
-use crate::utility::{
+use crate::utils::{
     self,
     func::ident::{Argument, Identifier, /*PID_TABLE,*/ Status /*Status_T*/},
     r#use::get_input,
@@ -37,7 +37,7 @@ pub fn a1() -> (i32, Identifier) {
         cid: Some("calle.1".to_string()),
         called_by: Some(vec!["main.rs::main()".to_string()]),
         status: Status {
-            status_title: utility::func::ident::Status_T::Working(Some("for_c_math".to_string())),
+            status_title: utils::func::ident::Status_T::Working(Some("for_c_math".to_string())),
             status_code: 523,
         },
         validate: false,

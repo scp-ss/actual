@@ -7,7 +7,6 @@ where
     loop {
         print!("{prompt}");
         std::io::Write::flush(&mut std::io::stdout()).unwrap();
-
         let mut buf = String::new();
         if std::io::stdin()
             .read_line(&mut buf)

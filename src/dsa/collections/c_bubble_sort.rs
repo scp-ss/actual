@@ -1,4 +1,4 @@
-use crate::utility::{
+use crate::utils::{
     self,
     func::ident::{Argument, Identifier, /*PID_TABLE,*/ Status /*Status_T*/},
     // r#use::get_input,
@@ -15,7 +15,7 @@ pub fn bs_1() -> (Vec<i32>, Identifier) {
         .map(|x| x.to_string())
         .collect::<Vec<_>>()
         .join(",");
-    crate::dsa::bubble_sort::bubble_sort(&mut vectors);
+    crate::dsa::collections::bubble_sort::bubble_sort(&mut vectors);
     let sorted = vectors
         .iter()
         .map(|x| x.to_string())
@@ -54,7 +54,7 @@ pub fn bs_1() -> (Vec<i32>, Identifier) {
         cid: Some("calle.2".to_string()),
         called_by: Some(vec!["main.rs::bubble_sort()".to_string()]),
         status: Status {
-            status_title: utility::func::ident::Status_T::Working(Some(
+            status_title: utils::func::ident::Status_T::Working(Some(
                 "for_c_bubble_sort".to_string(),
             )),
             status_code: 523,
@@ -103,3 +103,5 @@ pub fn bs_1() -> (Vec<i32>, Identifier) {
 
     (vectors, id2)
 }
+
+// fn bs_2()

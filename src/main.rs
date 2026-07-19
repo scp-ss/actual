@@ -1,18 +1,21 @@
 // #[macro_use]
 extern crate lazy_static;
 use std::vec;
+// use vector_double::DoubleAll;
 
 // use std::intrinsics::powf128;
-use vector_double::DoubleAll;
 
-mod acc_soft;
+pub mod acc_soft;
 mod database;
-mod dsa;
-mod math;
-mod menu;
-mod test;
-mod ui;
-mod utility;
+pub mod dsa;
+pub mod math;
+pub mod menu;
+pub mod rust_book;
+pub mod test;
+pub mod traits;
+pub mod ui;
+pub mod utils;
+
 /* fn main() {
     println!("Hello, world!");
     // powf128(10, 10)
@@ -23,8 +26,8 @@ mod utility;
 use crossterm::event;
 
 fn main() -> std::io::Result<()> {
-    let mut vector = vec![vec![20, 30]];
-    vector.double_all();
+    // let mut vector = vec![vec![20, 30]];
+    // vector.double_all();
     // let x = 42;
     // let y = 43;
     // let var1 = &x;
@@ -49,6 +52,9 @@ fn main() -> std::io::Result<()> {
 }
 
 fn call_to() {
+    // BEFORE we continue im again calling onto 1000 FUncs and not known and all output is in one thingy so i ahve to go through 2000lines;
+    // before this mess gets bigger, we fix ;
+    // println!("Start of guessing Game")
     println!("\n\n\n START OF CALL_TO main.rs");
     // -> (i32, utility::func::ident::Identifier) {
     // let result = math::add::add_two(5, 3);
@@ -72,18 +78,21 @@ fn call_to() {
         println!("\n\n\n START OF bubble_sort main.rs");
         // let mut arr = vec![2.2, 2.1];
 
-        let (_, mut b) = dsa::c_bubble_sort::bs_1();
+        let (_, mut b) = dsa::collections::c_bubble_sort::bs_1();
         // a =
         b.s_lock("Locked for testing".to_string());
         println!("END OF bubble_sort main.rs\n\n\n\n");
     }
-    println!("Testing INTO-iter vs ITER");
-    let ve = [vec![102030, 20, 21, 102, 20], vec![30, 30, 10]];
-    let ve_iter = ve.iter();
-    for (v_idx, v) in ve_iter.enumerate() {
-        for (l_idx, l) in v.iter().enumerate() {
-            println!("Vector Index: {v_idx}, Item Index: {l_idx}, Item Value: {l}");
+    {
+        println!("\n\n\n\n\nTesting INTO-iter vs ITER ");
+        let ve = [vec![102030, 20, 21, 102, 20], vec![30, 30, 10]];
+        let ve_iter = ve.iter();
+        for (v_idx, v) in ve_iter.enumerate() {
+            for (l_idx, l) in v.iter().enumerate() {
+                println!("Vector Index: {v_idx}, Item Index: {l_idx}, Item Value: {l}");
+            }
         }
+        println!("\n\n\n\n\nEND OF Testing INTO-iter vs ITER\n\n ");
     }
 
     println!("\n\n\n END OF CALL_TO main.rs");
@@ -108,7 +117,7 @@ fn test() {
 // }
 
 // fn bubble_sort() {}
-
+/*
 mod vector_double {
     use num_traits::Num;
 
@@ -174,3 +183,4 @@ mod vector_double {
         println!("{very_deep:?}, depth = {d4}");
     }
 }
+ */

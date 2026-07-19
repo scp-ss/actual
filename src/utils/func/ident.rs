@@ -28,7 +28,7 @@ pub struct Identifier {
     pub status: Status,
     pub validate: bool,
 }
-
+//the myserios bandid sosoerty
 #[derive(Clone, Debug)]
 pub struct Status {
     pub status_title: Status_T,
@@ -293,6 +293,11 @@ impl PidTable {
     // fn print_table()
     // fn print_pid()
 }
+// struct functionName {
+// name: Has,
+// }
+
+// impl functionName {}
 
 // impl Identifier {
 //     pub fn new_pid(self) {

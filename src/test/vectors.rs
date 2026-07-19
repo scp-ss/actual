@@ -1,5 +1,5 @@
-use crate::utility::r#use::get_input;
-use crate::utility::{
+use crate::utils::r#use::get_input;
+use crate::utils::{
     self,
     func::ident::{
         //Argument,
@@ -25,7 +25,7 @@ pub fn test() -> Identifier {
         cid: Some("testing1".to_string()),
         called_by: Some(vec!["main.rs::test()".to_string()]),
         status: Status {
-            status_title: utility::func::ident::Status_T::Working(Some(
+            status_title: utils::func::ident::Status_T::Working(Some(
                 "printing and modifying struct 'simga' : test::m::Walter. for: test::m.rs"
                     .to_string(),
             )),

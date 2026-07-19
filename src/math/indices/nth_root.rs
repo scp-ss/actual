@@ -64,3 +64,28 @@ fn main() {
     println!("{}", nth_root(2.0_f64, 2.0)); // ~1.4142...
     println!("{}", nth_root(0.5_f64, 2.0)); // ~0.7071...
 }
+
+fn nth_roots(a: f64, b: f64) -> f64 {
+    let n = a; // 27.
+    let mut guess_new = n / 2.0;
+    let mut unknown = n / guess_new.powf(n - 1.0);
+    let mut mean = (guess_new * (n - 1.0) + unknown) / n;
+    let mut difference = (guess_new - mean).abs();
+    let mut count = 0;
+    loop {
+        if difference <= 0.00000000001 && count >= 10 {
+            break;
+        }
+        guess_new = mean;
+        unknown = n / guess_new.powf(n - 1.0);
+        mean = (guess_new * (n - 1.0) + unknown) / n;
+        difference = (guess_new - mean).abs();
+        guess_new = mean;
+        count += 1;
+        println!(
+            "count = {count} \n, difference = {difference}, \n unknown = {unknown}\n, mean = {mean}, guess_new = {guess_new}"
+        );
+        guess_new = mean;
+    }
+    guess_new
+}
