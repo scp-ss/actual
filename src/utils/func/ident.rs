@@ -26,9 +26,16 @@ pub struct Identifier {
     pub cid: Option<String>,
     pub called_by: Option<Vec<String>>,
     pub status: Status,
-    pub validate: bool,
+    pub validate: bool, // make this a sperpate mutex struct that is contiant is_valid, valdating, and status, which is either 'curentl inserted'
+    // or multiple tries of trying to insert it cuaz the func was ran mmultiply itmes nad add a countter for it enum::x(u32)
+    // or atomic u32, whtvr,
+    // also curnl if is_valid is false we wount nto knwow the reason lets learn the reason for it aswel.
+    // a vector contianting all the reasons of alure, like more argumetns in x in x
+    // or smt else faliure.
+    // mkaeg
     pub func_pointer: Option<fn() -> Identifier>,
 }
+
 //the myserios bandid sosoerty
 
 #[derive(Clone, Debug)]

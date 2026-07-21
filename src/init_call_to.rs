@@ -8,6 +8,7 @@ use crossterm::event;
 // pub use crate::math::prelude
 pub mod call {}
 pub fn call() -> std::io::Result<()> {
+    crate::rust_book::guessing_game();
     crate::math::c_ool_patterns();
     crate::dsa::collections::c_bubble_sort::bs_1();
     //     c_wrapper!(

@@ -31,9 +31,10 @@ pub fn c_ool_patterns() -> Identifier {
     let prec = 700; // ~700 bits ≈ 210 decimal digits
 
     let values = [
-        ("1/99801", Rational::from((1, 99801))),
-        ("1/99^2", Rational::from((1, 99 * 99))),
-        ("1/81", Rational::from((1, 81))),
+        ("1/99980001 ", Rational::from((1, 99980001))),
+        ("1/998001", Rational::from((1, 998001))),
+        ("1/9801", Rational::from((1, 9801))),
+        ("1/81", Rational::from((1, 99))),
         ("1/9", Rational::from((1, 9))),
     ];
 
