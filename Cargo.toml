@@ -1,7 +1,13 @@
 [package]
 name = "actual"
-version = "0.1.0"
+version = "0.0.1"
+authors = ["scp-ss"]
 edition = "2024"
+keywords = ["learning", "dont-use"]
+description = "This crate is for learning purposes only do NOT use"
+readme = "readme.md"
+
+
 
 [dependencies]
 color-eyre = "0.6.3"

@@ -351,6 +351,7 @@ pub fn section_1_10() -> Identifier {
             _ => "ligma",
         }
     }
+
     // we do 'static here cauz the 'hello', 'bye' and 'ligma' are EMBEDED inside hte binary, they NEVER finish, they are ALWAYS there.
     // ill try a different approach
     // pub fn choose_str<'b>(n: u32, b: &'b str) -> &'b str {

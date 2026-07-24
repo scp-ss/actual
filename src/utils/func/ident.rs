@@ -75,14 +75,17 @@ impl Identifier {
             200..=299 => Status_T::Good(a),
             400..=599 => Status_T::Failed(a),
             _ => Status_T::Failed(None),
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+        }
+        /*
+         ***REMOVED***
+         ***REMOVED***
+         ***REMOVED***
+         ***REMOVED***
+         ***REMOVED***
+         ***REMOVED***
+         ***REMOVED***
+         ***REMOVED***
+         */
         // anyhow . so lwk fix this. and create a .json file contianing all the statuscode frm ths ewbstie1:
         /*
         https://www.rfc-editor.org/info/rfc6455/#section-7.4.1
