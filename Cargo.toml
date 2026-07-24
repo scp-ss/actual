@@ -6,7 +6,7 @@ edition = "2024"
 keywords = ["learning", "dont-use"]
 description = "This crate is for learning purposes only do NOT use"
 readme = "readme.md"
-
+license-file = "LICENSE"
 
 
 [dependencies]
