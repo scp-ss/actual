@@ -65,7 +65,7 @@ pub fn run_tui() {
                     match func_result {
                         Ok(f) => {
                             f();
-                            println!("\n✓ Function executed successfully");
+                            println!("\n Function executed successfully");
                         }
                         Err(e) => {
                             println!("\n✗ Error: {}", e);
@@ -126,7 +126,8 @@ fn display_functions(
 }
 
 fn clear_screen() {
-    print!("\x1B[2J\x1B[1;1H");
+    // print!("\x1B[2J\x1B[1;1H"); //idk what typa meth AI was doing
+    println!("\x1Bc");
 }
 // fn main() {
 // println!("wae")

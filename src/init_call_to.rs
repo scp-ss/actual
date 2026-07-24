@@ -7,8 +7,14 @@ use crossterm::event;
 // pub use crate::dsa::prelude::*;
 // pub use crate::math::prelude
 pub mod call {}
+use crate::rust_book::*;
+use crate::udemy::*;
 pub fn call() -> std::io::Result<()> {
-    crate::rust_book::guessing_game();
+    section_1_9(); // manually doing this is bad jsut use the pointer to call to ALL funcitosn 1 time at start.
+    chapter_three();
+    section_1_10();
+    guessing_game();
+    section_1_8();
     crate::math::c_ool_patterns();
     crate::dsa::collections::c_bubble_sort::bs_1();
     //     c_wrapper!(

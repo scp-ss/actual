@@ -26,8 +26,28 @@ pub mod rust_book;
 pub mod test;
 pub mod traits;
 pub mod tui;
+pub mod udemy;
 pub mod ui;
 pub mod utils;
+// now idr why i have the 'location thigny, but my guess is that for c_x,
+// we know locaiton of c_x + location of what its calling to.
+// so location wuld be the actual func (add.rs)
+// and hten cID would be equal to the c_x which is c_add,
+// and if none htat meann o c_x?
+// WHY DID I ADD ALL TEHS SHI T ODIENFIER BUT NEVER TOLD MY SELF WHAT IT IS
+/*/
+logged_fn! {
+    name: "section_1_8",
+    id: "ud.1.8",
+    location: "udemy::section_1_8",
+    description: "So basically no c_func for htis",
+    body: {
+        let mut p = Person::new("Walter".to_owned(), 20);
+        println!("P's values = {}", p.greet());
+        p.age_up(20);
+        // ... whatever you want, freely
+    }
+}P */
 /* fn main() {
     println!("Hello, world!");
     // powf128(10, 10)
@@ -87,9 +107,34 @@ a vsde extenio ntaht allwo u to copy
 like u wanted to change  the 998001 in 1/... and an extnein did htat ooudl be crazy
 
 */
+// also in the init folder in all functiosn that take input create a systme so that the inputs are auto fed.
+//and for funcs like this where they input has to equal to smt or lets say it lawasy has to be pstile
+// createa  input value = Enum::Type(val), and each func identifer has type, and if type type not found panic, if found.
+// use that type in example of inputs (ill adda 'two input takaen' and' input type'thing),
+// so that this loading process is insatn, and make a loading animaton
+//
+// Make a systemfor rust_book where it open another menu u can exit and u can all to rust_books's funcs (seperare ident system)
+//
+//
+// println!("\n\n\n\n\n\n ###### Start of rust_book::guessing_game::guessing_game() ######");
+//lwk i think this gotta go.
+// lets add anotehr mutex or global thingy that holds the location
+// as a  string.
+// then we can use it to print his cauz this shit is ugly af to write again and agian.
+// ye ig anotehr todo list
 fn main() {
     let _ = init_call_to::call();
     // init_call_to::init_all_functions();
     print!("\x1B[2J\x1B[1;1H");
-    ui::run_tui();
+    ui::run_tui(); // turn this into a _header that calls to UI or wtvr needed and UI allows to 
+    // chose between this TUI (which si for learing purposes) or anotehr TUI whcih would contain
+    //stuff u need on a daily.
 }
+
+/*
+So make tui.rs return a TUI struct which u can call methods on.
+
+Cauz each fuckin uhh PID system (one for learning, one for actual project, oen for udemy inside learning, one for fukin, rust_book
+, and uhh one for sections inside Udemy.)
+
+*/

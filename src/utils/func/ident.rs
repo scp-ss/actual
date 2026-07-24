@@ -35,7 +35,6 @@ pub struct Identifier {
     // mkaeg
     pub func_pointer: Option<fn() -> Identifier>,
 }
-
 //the myserios bandid sosoerty
 
 #[derive(Clone, Debug)]
@@ -120,7 +119,7 @@ impl Identifier {
         self.status
             .status_title = Status_T::Failed(Some("".to_string())) // why are we doing a "".to_string , why not none 
     }
-
+    // Learn to use phantom data or wtvr to lock and unclokc
     // pub fn generate_pid(&mut self) -> &mut Identifier {
     //     // dont do self her cauz if we do sel id would be consued, adn if we do u32 then method vlalidate wont get called
     //     self.pid = PID_TABLE.next_pid();

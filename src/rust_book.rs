@@ -43,7 +43,45 @@ fn guessing_game() -> Identifier { ... }
 //     }
 // }
 
-pub use guessing_game::guessing_game;
+/* beter version is:
+use std::cmp::Ordering;
+use std::io;
+
+use rand::Rng;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    loop {
+        println!("Please input your guess.");
+
+        let mut guess = String::new();
+
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
+        println!("You guessed: {guess}");
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
+    }
+}
+*/
+//
 // here it is
 pub mod guessing_game {
     use crate::utils::{
@@ -51,18 +89,10 @@ pub mod guessing_game {
         get_input,
     };
     use rand::prelude::*;
-    // also in the init folder in all functiosn that take input create a systme so that the inputs are auto fed.
-    //and for funcs like this where they input has to equal to smt or lets say it lawasy has to be pstile
-    // createa  input value = Enum::Type(val), and each func identifer has type, and if type type not found panic, if found.
-    // use that type in example of inputs (ill adda 'two input takaen' and' input type'thing),
-    // so that this loading process is insatn, and make a loading animaton
+
     // use rug::rand;
     pub fn guessing_game() -> Identifier {
-        println!("\n\n\n\n\n\n ###### Start of rust_book::guessing_game::guessing_game() ######"); //lwk i think this gotta go.
-        // lets add anotehr mutex or global thingy that holds the location
-        // as a  string.
-        // then we can use it to print his cauz this shit is ugly af to write again and agian.
-        // ye ig anotehr todo list
+        println!("\n\n\n\n\n\n ###### Start of rust_book::guessing_game::guessing_game() ######");
         let mut rng = rand::rng();
         let random: u32 = rng.random_range(0..=100);
         println!("random : {random}");
@@ -126,4 +156,60 @@ pub mod guessing_game {
 
         id1
     }
+    // fn
 }
+pub mod chapter_three {
+    use crate::utils::func::ident::{Identifier, Status};
+    pub fn chapter_three() -> Identifier {
+        println!("\n\n\n\n\n\n ###### Start of rust_book::chapter_three::chapter_three() ######");
+
+        let mut id1 = Identifier {
+            name: "chapter_three".to_string(),
+            id: "rb-2".to_string(),
+            pid: None,
+            location: "crate::rust_book::chapter_three::chapter_three()".to_string(),
+            description: Some(
+                "Chapter three of TRPB and also can be accessed in rust_book::chapter_three()"
+                    .to_string(),
+            ),
+            return_type: None,
+            return_value: None,
+            args_type: None,
+            number_of_args: None,
+            args: None,
+            source: Some(
+                "crate::rust_book::chapter_three::chapter_three()::chapter_three(){}".to_string(),
+            ),
+            source_call: Some("call.rb-2".to_string()),
+            cid: None,
+            called_by: Some(vec!["main.rs::main()".to_string()]),
+            status: Status {
+                status_title: crate::utils::func::ident::Status_T::Working(Some(
+                    "rust_book".to_string(),
+                )),
+                status_code: 523,
+            },
+            validate: false,
+            func_pointer: Some(chapter_three as fn() -> Identifier),
+        };
+        id1.print_s();
+        id1.generate_pid()
+            .validate();
+        id1.print_s();
+        let pid = id1
+            .pid
+            .expect("NO PID AHAH");
+        println!("id1 is {}", id1.validate.clone());
+        println!("PID = {}, {:?}", std::process::id(), pid);
+        println!("Calling from crate::rust_book::chapter_three::chapter_three()::chapter_three");
+        println!("###### End of rust_book::chapter_three::chapter_three() ######\n\n\n\n\n");
+        println!("{:?}", id1.clone());
+        id1.s_status(Some("Free to be used".to_string()), Some(200));
+        id1.print_s();
+
+        id1
+    }
+}
+
+pub use chapter_three::chapter_three;
+pub use guessing_game::guessing_game;
